@@ -77,11 +77,15 @@ namespace{
                 // Print the name of each function being compiled
                 fprintf(stderr, "Function: %s\n", functionName);
                 
-                //FOR_EACH_FUNCTION()
 
+            
             }
 
 
 
+    }
+
+    gimple_opt_pass* make_hteli1_pass(gcc::context *ctx) {
+        return new hteli1_pass(ctx);
     }
 }
