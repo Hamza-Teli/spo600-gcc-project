@@ -8,9 +8,11 @@ This pass accomplishes the following:
 
 #include "gcc-plugin.h"
 #include "plugin-version.h"
+#include "stdio.h"
 #include "cgraph.h" // As stated in SPO600 wiki
 #include "basic-block.h" // As stated in SPO600 wiki
 #include "gimple-iterator.h" // As stated in SPO600 wiki
+#include "function.cc"
 
 // Namespace <--- This section I learned from SPO600 Week 7 - Class 1 Lecture from Professor Chris Tyler
 namespace{
@@ -53,9 +55,30 @@ namespace{
 
             }
 
-            // The execute function
-            unsigned int execute (function *) override {
+            // The execute function: this is where the magic happens
+            unsigned int execute (function * func) override {
                 
+                // Declarations
+                // Count the number of basic blocks
+                unsigned int numberOfBasicBlocks = 0;
+
+                // Count the number of Gimple statements
+                unsigned int numberOfGimpleStatements = 0;
+
+                // Instantiate function name
+                /* 
+                    Inside function.cc, there's a function_name method that returns
+                    the name of a function. Check out line 6454:
+                    https://github.com/gcc-mirror/gcc/blob/master/gcc/function.cc
+                        
+                */
+                const char* functionName = function_name(func);
+
+                // Print the name of each function being compiled
+                fprintf(stderr, "Function: %s\n", functionName);
+                
+                //FOR_EACH_FUNCTION()
+
             }
 
 
