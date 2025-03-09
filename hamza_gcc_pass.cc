@@ -80,10 +80,10 @@ namespace{
                 
                 // Declarations
                 // Count the number of basic blocks
-                unsigned int numberOfBasicBlocks = 0;
+                unsigned int number_of_basic_blocks = 0;
 
                 // Count the number of Gimple statements
-                unsigned int numberOfGimpleStatements = 0;
+                unsigned int number_of_gimple_statements = 0;
 
                 // Instantiate function name
                 /* 
@@ -96,6 +96,25 @@ namespace{
 
                 // Print the name of each function being compiled
                 fprintf(stderr, "Function: %s\n", functionName);
+
+
+                // Now we use the macro FOR_EACH_FUNCTION to get the number of basic blocks
+                // and print the number of gimple statements in each function
+                basic_block BB;
+                FOR_EACH_BB_FN(BB, func) {
+                    // Increment
+                    number_of_basic_blocks++;
+
+                    // Now for each basic block, iterate using the gimple iterator in the wiki
+                    // Credit: http://spo600.cdot.systems/doku.php?id=spo600:creating_a_gcc_pass
+
+                    for (gimple_stmt_iterator gsi = gsi_start_bb (bb); !gsi_end_p (gsi); gsi_next(&gsi)) {
+                        number_of_gimple_statements++;
+                    }
+                }
+
+                // Now we can print the basic blocks
+                fprintf(stderr, "---- Function: %s | Basic Blocks: %u, | Gimple Statements: %u\n", functionName, number_of_basic_blocks,  number_of_gimple_statements);
                 
                 // Return value
                 return 0;
