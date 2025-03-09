@@ -74,7 +74,7 @@ namespace{
             }
 
             // The gate function 
-            bool gate(function *func) override {
+            bool gate(function *) final override {
                 // return 
                 return true;
 
