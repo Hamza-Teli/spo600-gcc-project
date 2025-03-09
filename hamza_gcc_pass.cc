@@ -103,10 +103,9 @@ namespace{
             
             }
     };
+}
 
-
-    // This is used inside the tree-pass.h file
-    gimple_opt_pass* make_hteli1_pass(gcc::context *ctx) {
-        return new hteli1_pass(ctx);
-    }
+// This is used inside the tree-pass.h file
+gimple_opt_pass* make_hteli1_pass(gcc::context *ctx) {
+    return new hteli1_pass(ctx);
 }
