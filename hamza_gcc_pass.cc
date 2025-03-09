@@ -21,6 +21,11 @@ This pass accomplishes the following:
 #include "gcc-plugin.h"
 #include "plugin-version.h"
 #include "stdio.h"
+#include "pass_manager.h"
+#include "context.h"
+#include "tree-core.h"
+#include "builtins.h"
+#include "dumpfile.h"
 
 // Added headers
 #include "gimple-ssa.h"
@@ -108,7 +113,7 @@ namespace{
                     // Now for each basic block, iterate using the gimple iterator in the wiki
                     // Credit: http://spo600.cdot.systems/doku.php?id=spo600:creating_a_gcc_pass
 
-                    for (gimple_stmt_iterator gsi = gsi_start_bb (bb); !gsi_end_p (gsi); gsi_next(&gsi)) {
+                    for (gimple_stmt_iterator gsi = gsi_start_bb (BB); !gsi_end_p (gsi); gsi_next(&gsi)) {
                         number_of_gimple_statements++;
                     }
                 }
