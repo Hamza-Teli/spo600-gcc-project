@@ -74,14 +74,14 @@ namespace{
             }
 
             // The gate function 
-            bool gate(function *fun) override {
+            bool gate(function *func) override {
                 // return 
                 return true;
 
             }
 
             // The execute function: this is where the magic happens
-            unsigned int execute (function * func) override {
+            unsigned int execute (function *func) override {
                 
                 // Declarations
                 // Count the number of basic blocks
