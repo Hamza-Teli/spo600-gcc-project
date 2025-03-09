@@ -43,7 +43,7 @@ This pass accomplishes the following:
 namespace{
     const pass_data pass_data_hteli1 = {
             GIMPLE_PASS, /* type */
-            "hteli1_pass", /* name of my pass [We will use this inside passes.def as pass_hteli1_pass]*/ 
+            "hteli1", /* name of my pass [We will use this inside passes.def as pass_hteli1_pass]*/ 
             OPTGROUP_NONE, /* optinfo_ flags */
             TV_NONE, /* tv_id */
             PROP_cfg, /* specify that we need properties */
@@ -66,10 +66,10 @@ namespace{
 
 
     // This is where you identify the class
-    class hteli1_pass : public gimple_opt_pass {
+    class pass_hteli1 : public gimple_opt_pass {
         public:
             // Constructor
-            hteli1_pass(gcc::context *ctx) : gimple_opt_pass(pass_data_hteli1, ctx) {
+            pass_hteli1(gcc::context *ctxt) : gimple_opt_pass(pass_data_hteli1, ctxt) {
 
             }
 
@@ -130,6 +130,6 @@ namespace{
 }
 
 // This is used inside the tree-pass.h file
-gimple_opt_pass* make_hteli1_pass(gcc::context *ctx) {
-    return new hteli1_pass(ctx);
+gimple_opt_pass* make_pass_hteli1(gcc::context *ctxt) {
+    return new pass_hteli1(ctxt);
 }
