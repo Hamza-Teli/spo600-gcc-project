@@ -9,16 +9,18 @@ This pass accomplishes the following:
 #include "gcc-plugin.h"
 #include "plugin-version.h"
 #include "stdio.h"
+#include "tree.h"
+#include "function.h"
 #include "cgraph.h" // As stated in SPO600 wiki
 #include "basic-block.h" // As stated in SPO600 wiki
 #include "gimple-iterator.h" // As stated in SPO600 wiki
-#include "function.cc"
+
 
 // Namespace <--- This section I learned from SPO600 Week 7 - Class 1 Lecture from Professor Chris Tyler
 namespace{
     const pass_data pass_data_hteli1 = {
             GIMPLE_PASS, /* type */
-            "hteli1_pass", /* name of my pass */
+            "hteli1_pass", /* name of my pass [We will use this inside passes.def as pass_hteli1_pass]*/ 
             OPTGROUP_NONE, /* optinfo_ flags */
             TV_NONE, /* tv_id */
             PROP_cfg, /* specify that we need properties */
@@ -77,14 +79,15 @@ namespace{
                 // Print the name of each function being compiled
                 fprintf(stderr, "Function: %s\n", functionName);
                 
+                // Return value
+                return 0;
 
             
             }
+    };
 
 
-
-    }
-
+    // This is used inside the tree-pass.h file
     gimple_opt_pass* make_hteli1_pass(gcc::context *ctx) {
         return new hteli1_pass(ctx);
     }
