@@ -5,15 +5,33 @@ This pass accomplishes the following:
 
 
 */
-
+// These headers were taken from Professor Chris Tyler's Week 7 Lecture
+#include "config.h"
+#include "system.h"
+#include "coretypes.h"
+#include "backend.h"
+#include "tree.h"
+#include "gimple.h"
+#include "tree-pass.h"
+#include "ssa.h"
+#include "gimple-iterator.h" // As stated in SPO600 wiki
+#include "gimple-walk.h"
+#include "internal-fn.h"
+#include "gimple-pretty-print.h"
 #include "gcc-plugin.h"
 #include "plugin-version.h"
 #include "stdio.h"
-#include "tree.h"
-#include "function.h"
+
+// Added headers
+#include "gimple-ssa.h"
 #include "cgraph.h" // As stated in SPO600 wiki
+#include "attribs.h"
+#include "pretty-print.h"
+#include "tree-inline.h"
+#include "intl.h"
+#include "function.h"
 #include "basic-block.h" // As stated in SPO600 wiki
-#include "gimple-iterator.h" // As stated in SPO600 wiki
+
 
 
 // Namespace <--- This section I learned from SPO600 Week 7 - Class 1 Lecture from Professor Chris Tyler
