@@ -15,20 +15,20 @@ This pass accomplishes the following:
 #include "tree-pass.h"
 #include "ssa.h"
 #include "tree-pretty-print.h"
-#include "gimple-iterator.h" // As stated in SPO600 wiki
+#include "gimple-iterator.h"
 #include "gimple-walk.h"
 #include "internal-fn.h"
 #include "gimple-pretty-print.h"
+#include "cgraph.h"
 
 // Added headers
 #include "gimple-ssa.h"
-#include "cgraph.h" // As stated in SPO600 wiki
 #include "attribs.h"
 #include "pretty-print.h"
 #include "tree-inline.h"
 #include "intl.h"
 #include "function.h"
-#include "basic-block.h" // As stated in SPO600 wiki
+#include "basic-block.h"
 
 
 
