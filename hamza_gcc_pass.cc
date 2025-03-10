@@ -14,18 +14,11 @@ This pass accomplishes the following:
 #include "gimple.h"
 #include "tree-pass.h"
 #include "ssa.h"
+#include "tree-pretty-print.h"
 #include "gimple-iterator.h" // As stated in SPO600 wiki
 #include "gimple-walk.h"
 #include "internal-fn.h"
 #include "gimple-pretty-print.h"
-#include "gcc-plugin.h"
-#include "plugin-version.h"
-#include "stdio.h"
-#include "pass_manager.h"
-#include "context.h"
-#include "tree-core.h"
-#include "builtins.h"
-#include "dumpfile.h"
 
 // Added headers
 #include "gimple-ssa.h"
@@ -100,7 +93,9 @@ namespace{
                 const char* functionName = function_name(func);
 
                 // Print the name of each function being compiled
-                fprintf(stderr, "Function: %s\n", functionName);
+                if (dump_file) {
+                    fprintf(dump_file, "Function: %s\n", functionName);
+                }
 
 
                 // Now we use the macro FOR_EACH_FUNCTION to get the number of basic blocks
@@ -119,8 +114,9 @@ namespace{
                 }
 
                 // Now we can print the basic blocks
-                fprintf(stderr, "---- Function: %s | Basic Blocks: %u, | Gimple Statements: %u\n", functionName, number_of_basic_blocks,  number_of_gimple_statements);
-                
+                if (dump_file) {
+                    fprintf(dump_file, "---- Function: %s | Basic Blocks: %u, | Gimple Statements: %u\n", functionName, number_of_basic_blocks,  number_of_gimple_statements);
+                }                
                 // Return value
                 return 0;
 
